@@ -25,6 +25,7 @@ body {
   color: white;
 }
 
+/* Toggle Circle Off */
 [class*='color--'] .circle {
   display: none;
 }
@@ -76,6 +77,7 @@ body {
   text-decoration: none;
 }
 
+/* Color Picker */
 .col-xs-12:hover .dropdown-content {
   display: block;
 }
@@ -95,5 +97,4 @@ body {
 
 .selected {
   background-color: darkgrey;
-  border: solid black 1px;
 }

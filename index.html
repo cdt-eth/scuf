@@ -57,8 +57,7 @@
                     <a href="#" class="green">Green</a>
                 </div>
             </div>
-        </div>
-        <div class='row'>
+
             <div class="box col-xs-12 col-sm-6 col-lg-3">
                 <div class="circle"></div>
                 <div class="dropdown-content">
@@ -95,8 +94,7 @@
                     <a href="#" class="green">Green</a>
                 </div>
             </div>
-        </div>
-        <div class='row'>
+
             <div class="box col-xs-12 col-sm-6 col-lg-3 color--blue">
                 <div class="circle"></div>
                 <div class="dropdown-content">
@@ -133,8 +131,7 @@
                     <a href="#" class="green">Green</a>
                 </div>
             </div>
-        </div>
-        <div class='row'>
+
             <div class="box col-xs-12 col-sm-6 col-lg-3">
                 <div class="circle"></div>
                 <div class="dropdown-content">
@@ -172,57 +169,82 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
+    <script>
 
-        <script>
+        var boxes = $('div.box');
+        var toBlue = $('.blue')
+        var toYellow = $('.yellow')
+        var toRed = $('.red')
+        var toGreen = $('.green')
+        var oneClass = function (index, className) {
+            return (className.match(/(^|\s)color-\S+/g) || []).join(' ');
+        }
 
-            var boxes = $('div.box');
-            var toBlue = $('.blue')
-            var toYellow = $('.yellow')
-            var toRed = $('.red')
-            var toGreen = $('.green')
-
-
-            toBlue.click(function () {
+        toBlue.click(function (event) {
+            if ($('.selected').is('.color--green, .color--blue, .color--yellow, .color--red')) {
+                event.preventDefault();
+            } else if ($('.row').find('.color--green:first, .color--blue:first, .color--yellow:first, .color--red:first').length === 4) {
                 boxes.removeClass('color--blue');
-                $(this).parent().parent().addClass('color--blue');
-            });
+                $(this).parent().parent().removeClass(oneClass).addClass('color--blue');
+            } else {
+                event.preventDefault()
+            }
+        });
 
-            toYellow.click(function () {
+        toYellow.click(function (event) {
+            if ($('.selected').is('.color--green, .color--blue, .color--yellow, .color--red')) {
+                event.preventDefault();
+            } else if ($('.row').find('.color--green:first, .color--blue:first, .color--yellow:first, .color--red:first').length === 4) {
                 boxes.removeClass('color--yellow');
-                $(this).parent().parent().addClass('color--yellow');
-            });
+                $(this).parent().parent().removeClass(oneClass).addClass('color--yellow');
+            } else {
+                event.preventDefault()
+            }
+        });
 
-            toRed.click(function () {
+        toRed.click(function (event) {
+            if ($('.selected').is('.color--green, .color--blue, .color--yellow, .color--red')) {
+                event.preventDefault();
+            } else if ($('.row').find('.color--green:first, .color--blue:first, .color--yellow:first, .color--red:first').length === 4) {
                 boxes.removeClass('color--red');
-                $(this).parent().parent().addClass('color--red');
-            });
+                $(this).parent().parent().removeClass(oneClass).addClass('color--red');
+            } else {
+                event.preventDefault()
+            }
+        });
 
-            toGreen.click(function () {
+        toGreen.click(function (event) {
+            if ($('.selected').is('.color--green, .color--blue, .color--yellow, .color--red')) {
+                event.preventDefault();
+            } else if ($('.row').find('.color--green:first, .color--blue:first, .color--yellow:first, .color--red:first').length === 4) {
                 boxes.removeClass('color--green');
-                $(this).parent().parent().addClass('color--green');
+                $(this).parent().parent().removeClass(oneClass).addClass('color--green');
+            } else {
+                event.preventDefault()
+            }
+        });
+
+
+        // Hover Pop-up
+        $('.col-xs-12').hover(function () {
+            $(this).closest('.row').find('.col-xs-12').not(this).removeClass('selected');
+            $(this).toggleClass('selected');
+        })
+
+        // Hover Hide Dot
+        $('.col-xs-12').hover(
+            function () {
+                $(this).find('.circle').css('visibility', 'hidden');
+            },
+            function () {
+                $(this).find('.circle').css('visibility', 'initial')
             });
 
 
-
-            // Hover Pop-up
-            $('.col-xs-12').hover(function () {
-                $(this).closest('.row').find('.col-xs-12').not(this).removeClass('selected');
-                $(this).toggleClass('selected');
-            })
-
-            // Hover Hide Dot
-            $('.col-xs-12').hover(
-                function () {
-                    $(this).find('.circle').css('visibility', 'hidden');
-                },
-                function () {
-                    $(this).find('.circle').css('visibility', 'initial')
-                });
-
-
-        </script>
+    </script>
 </body>
 
 </html>
